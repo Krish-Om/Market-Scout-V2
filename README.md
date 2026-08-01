@@ -13,3 +13,10 @@ The Hook & Script Generator 🎬:
     Agent 1 (Trend Analyzer): Evaluates the clothing item and the target Nepali audience to brainstorm a viral "hook" (e.g., "3 outfits under Rs. 2000 in Bhaktapur").
 
     Agent 2 (Script Writer): Outputs a structured JSON payload containing the exact audio script (in Romanized Nepali/English) and visual scene descriptions for her to film.
+
+July 30
+Defined two agents , trend researcher or spotter and scriptwriter, social media content creator agent.
+Generated their respective prompts with the help of Gemini and ChatGPT.
+
+july31
+Using GROQ SDK for agent orchestration.
