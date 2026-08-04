@@ -20,3 +20,20 @@ Generated their respective prompts with the help of Gemini and ChatGPT.
 
 july31
 Using GROQ SDK for agent orchestration.
+
+Aug 3:
+Going with Image upload functionality.
+Using the llama-3-27b-verstaile model.
+
+Aug4:
+Converting the Uploaded image into a encoded image bytes.
+Sending combined bytes image and prompt to the agent, which led to TokenExceed Error
+So, using SOC, separating both image and prompt separately.
+Using guardrails.
+
+## Agents Flow
+
+trend_spotter ➔ local_scriptwriter ➔ guardrail ──(Passed)──> result
+                      ^                     │
+                      └────(Failed: Fix)────┘
+Successfully implemented the logic of above flow
