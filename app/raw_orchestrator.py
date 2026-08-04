@@ -7,7 +7,9 @@ from app.config import Config
 load_dotenv()  # Load environment variables from .env file
 
 # 🔑 Initialize Client
-client = Config.GROQ_API_KEY
+if not Config.GROQ_API_KEY:
+    raise ValueError("GROQ_API_KEY is not set in the environment variables.")
+client = Groq(api_key=Config.GROQ_API_KEY)
 
 # 📜 Agent Prompts
 TREND_SPOTTER_PROMPT = """You are a Hyper-Local TikTok Fashion Trend Spotter for Bhaktapur. Analyze the text description of the clothing item and context, then output ONE executable, high-conversion TikTok concept optimized for smartphone production.
@@ -183,7 +185,7 @@ async def run_tiktok_pipeline(
 
         print("🛡️ Running Guardrail QA Check...")
         guardrail_raw = await call_llm(GUARDRAIL_PROMPT, script_output, json_mode=True)
-        guardrail_result = await json.loads(guardrail_raw)
+        guardrail_result = json.loads(guardrail_raw)
 
         if guardrail_result.get("status") == "PASSED":
             print("✅ Script passed all guardrail checks!")
