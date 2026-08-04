@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from app.routes import router as generation_router
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import Config
+from app.routes import router as generation_router
 
 app_desc = """
 # TikTok Script Generation API
@@ -26,3 +27,5 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.router.include_router(generation_router)
