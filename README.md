@@ -1,39 +1,86 @@
-# • Explicit orchestration — you now write the loop yourself: call the model, parse the response, decide the next action, manage state across steps.
+# Market Scout V2
 
-# • Token budget enforcement — track cumulative tokens per request/session and cut off before a ceiling, logging every call.
+An agentic content-generation workflow for a Nepali audience.  
+This project focuses on trend spotting, script writing, structured outputs, image handling, and guardrails for reliable generation.
 
-# • Structured outputs — use JSON schema / response_format so the model returns a parseable shape instead of free text you regex out of.
+## Core Ideas
 
-# • Problem-market fit — skill inventory, problem identification, real user interviews, and a demo targeted at one specific person's specific pain.
+- **Explicit orchestration** — the loop is managed manually by calling the model, parsing the response, deciding the next action, and maintaining state across steps.
+- **Token budget enforcement** — cumulative tokens are tracked per request/session and cut off before exceeding a ceiling.
+- **Structured outputs** — JSON schema or `response_format` is used so outputs are parseable instead of requiring regex cleanup.
+- **Problem-market fit** — the demo is targeted at one specific person’s specific pain point, supported by real problem discovery.
 
-# Problem Market Fit:
+## Problem-Market Fit
 
-The Hook & Script Generator 🎬:
+### The Hook & Script Generator
 
-    Agent 1 (Trend Analyzer): Evaluates the clothing item and the target Nepali audience to brainstorm a viral "hook" (e.g., "3 outfits under Rs. 2000 in Bhaktapur").
+- **Agent 1: Trend Analyzer**  
+  Evaluates the clothing item and the target Nepali audience to brainstorm a viral hook.  
+  Example: *“3 outfits under Rs. 2000 in Bhaktapur.”*
 
-    Agent 2 (Script Writer): Outputs a structured JSON payload containing the exact audio script (in Romanized Nepali/English) and visual scene descriptions for her to film.
-
-July 30
-Defined two agents , trend researcher or spotter and scriptwriter, social media content creator agent.
-Generated their respective prompts with the help of Gemini and ChatGPT.
-
-july31
-Using GROQ SDK for agent orchestration.
-
-Aug 3:
-Going with Image upload functionality.
-Using the llama-3-27b-verstaile model.
-
-Aug4:
-Converting the Uploaded image into a encoded image bytes.
-Sending combined bytes image and prompt to the agent, which led to TokenExceed Error
-So, using SOC, separating both image and prompt separately.
-Using guardrails.
+- **Agent 2: Script Writer**  
+  Produces a structured JSON payload with:
+  - audio script in Romanized Nepali/English
+  - visual scene descriptions for filming
 
 ## Agents Flow
 
-trend_spotter ➔ local_scriptwriter ➔ guardrail ──(Passed)──> result
-                      ^                     │
-                      └────(Failed: Fix)────┘
-Successfully implemented the logic of above flow
+`trend_spotter → local_scriptwriter → guardrail → result`
+
+If validation fails, the flow returns for a fix:
+
+`trend_spotter → local_scriptwriter → guardrail → fix → local_scriptwriter`
+
+## Project Notes and Logs
+
+### July 30
+
+Defined two agents:
+- trend researcher / spotter
+- scriptwriter for social media content creation
+
+Prompts were generated with the help of Gemini and ChatGPT.
+
+### July 31
+
+Used the Groq SDK for agent orchestration.
+
+### August 3
+
+Moved toward image upload functionality and used the `llama-3-27b-verstaile` model.
+
+### August 4
+
+Converted uploaded images into encoded image bytes. Sending combined image bytes and prompt caused a token exceed error.
+
+To address this:
+- image and prompt were separated using SOC
+- guardrails were added
+- the workflow was shifted to textual processing only, since the free-tier API worked better with text than with encoded images
+
+## Implementation Status
+
+The following flow is working:
+
+- agent orchestration
+- structured content generation
+- image upload handling
+- guardrail validation
+- fix-and-retry logic
+
+## Repository Notes
+
+The `app/` folder contains the main application logic:
+
+- `config.py`
+- `controller.py`
+- `raw_orchestrator.py`
+- `routes.py`
+- `schemas.py`
+
+## Next Improvements
+
+- Add clearer schema examples for agent outputs.
+- Document request and response flow in more detail.
+- Add setup and run instructions.
+- Include example inputs and sample outputs.
