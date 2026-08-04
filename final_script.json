@@ -1,0 +1,118 @@
+{
+  "meta_info": {
+    "chosen_format": "15-second TikTok video",
+    "total_estimated_duration": 15,
+    "overall_vibe_description": "Light, airy, and carefree"
+  },
+  "audio_direction": {
+    "sound_type": "Upbeat folk-pop music",
+    "audio_timing_strategy": "Sync with visuals",
+    "sfx_cues": [
+      "Soft 'ting' for reveal",
+      "Cheerful chime at the end"
+    ]
+  },
+  "script_timeline": [
+    {
+      "shot_number": 1,
+      "timestamp": "0:00-0:02",
+      "location": "Traditional Newari temple",
+      "camera_framing": "Wide shot",
+      "camera_action": "Establishing shot",
+      "subject_action": "None",
+      "visual_description": "Temple facade",
+      "on_screen_text": null,
+      "voiceover_script": null,
+      "audio_cue": null
+    },
+    {
+      "shot_number": 2,
+      "timestamp": "0:02-0:03",
+      "location": "Traditional Newari temple",
+      "camera_framing": "Close-up",
+      "camera_action": "Pan over carvings",
+      "subject_action": "None",
+      "visual_description": "Intricate carvings of wooden window",
+      "on_screen_text": null,
+      "voiceover_script": null,
+      "audio_cue": null
+    },
+    {
+      "shot_number": 3,
+      "timestamp": "0:03-0:06",
+      "location": "Traditional Newari temple",
+      "camera_framing": "Full-body shot",
+      "camera_action": "Quick cut to model",
+      "subject_action": "Standing in front of window",
+      "visual_description": "Model wearing pastel kurti set",
+      "on_screen_text": "Summer just got sweeter!",
+      "voiceover_script": "Summer just got sweeter!",
+      "audio_cue": "Soft 'ting'"
+    },
+    {
+      "shot_number": 4,
+      "timestamp": "0:06-0:07.5",
+      "location": "Traditional Newari temple",
+      "camera_framing": "Full-body shot",
+      "camera_action": "Twirl shot",
+      "subject_action": "Twirling",
+      "visual_description": "Flowy silhouette of kurti set",
+      "on_screen_text": null,
+      "voiceover_script": null,
+      "audio_cue": null
+    },
+    {
+      "shot_number": 5,
+      "timestamp": "0:07.5-0:08.5",
+      "location": "Traditional Newari temple",
+      "camera_framing": "Close-up",
+      "camera_action": "Detail shot",
+      "subject_action": "None",
+      "visual_description": "Intricate floral embroidery",
+      "on_screen_text": null,
+      "voiceover_script": null,
+      "audio_cue": null
+    },
+    {
+      "shot_number": 6,
+      "timestamp": "0:08.5-0:10.5",
+      "location": "Traditional Newari temple",
+      "camera_framing": "Full-body shot",
+      "camera_action": "Model walking towards camera",
+      "subject_action": "Walking",
+      "visual_description": "Model showcasing kurti set",
+      "on_screen_text": null,
+      "voiceover_script": null,
+      "audio_cue": null
+    },
+    {
+      "shot_number": 7,
+      "timestamp": "0:10.5-0:11.5",
+      "location": "Traditional Newari temple",
+      "camera_framing": "Point-of-view shot",
+      "camera_action": "Price and shop details",
+      "subject_action": "None",
+      "visual_description": "Price and shop details overlay",
+      "on_screen_text": "NPR 3,500 @fashionisland",
+      "voiceover_script": null,
+      "audio_cue": null
+    },
+    {
+      "shot_number": 8,
+      "timestamp": "0:11.5-0:13.5",
+      "location": "Traditional Newari temple",
+      "camera_framing": "Full-body shot",
+      "camera_action": "Final shot of model and temple",
+      "subject_action": "Standing in front of window",
+      "visual_description": "Model and temple facade",
+      "on_screen_text": null,
+      "voiceover_script": null,
+      "audio_cue": "Cheerful chime"
+    }
+  ],
+  "conversion_ending": {
+    "final_cta_text": "Get yours now! NPR 3,500 @fashionisland",
+    "recommended_action_type": "Visit Shop and DM on Instagram",
+    "production_note": "Include a clear overlay of the shop's Instagram handle and price, with a 'swipe up' or 'link in bio' directive"
+  }
+}

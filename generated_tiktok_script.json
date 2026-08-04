@@ -1,0 +1,103 @@
+{
+  "meta_info": {
+    "chosen_format": "TikTok",
+    "total_estimated_duration": 15,
+    "overall_vibe_description": "Fresh, breezy, culturally respectful, upbeat"
+  },
+  "audio_direction": {
+    "sound_type": "Light acoustic guitar with subtle Newari flute",
+    "audio_timing_strategy": "Background music throughout; a rising whoosh at door opening, soft brush on fabric, gentle fade at sunset",
+    "sfx_cues": ["whoosh", "soft brush", "silhouette chime"]
+  },
+  "script_timeline": [
+    {
+      "shot_number": 1,
+      "timestamp": "0:00-0:03",
+      "location": "Inside a stone door in Bhaktapur courtyard",
+      "camera_framing": "Medium close‑up of the door frame",
+      "camera_action": "Slow handheld zoom out as door swings open",
+      "subject_action": "Dress appears standing in front of carved wooden archway",
+      "visual_description": "Stone door, warm terracotta bricks, floral dress pops against earthy backdrop",
+      "on_screen_text": "Step into summer 🌸",
+      "voiceover_script": "Bhaktapur ko sabai bhanda bhalo floral dress!",
+      "audio_cue": "whoosh"
+    },
+    {
+      "shot_number": 2,
+      "timestamp": "0:03-0:05",
+      "location": "Same courtyard, close to the dress",
+      "camera_framing": "Close‑up of hand on fabric",
+      "camera_action": "Hand moves gently, finger tracing pattern",
+      "subject_action": "Model’s hand touches dress",
+      "visual_description": "Soft focus on floral pattern, background slightly blurred",
+      "on_screen_text": null,
+      "voiceover_script": null,
+      "audio_cue": "soft brush"
+    },
+    {
+      "shot_number": 3,
+      "timestamp": "0:05-0:08",
+      "location": "Stone path outside the archway",
+      "camera_framing": "Medium shot of model walking",
+      "camera_action": "Follow the model while keeping dress in frame",
+      "subject_action": "Model walks, dress sways with breeze",
+      "visual_description": "Stone path, wooden beams, sunlight filtering through leaves",
+      "on_screen_text": null,
+      "voiceover_script": null,
+      "audio_cue": null
+    },
+    {
+      "shot_number": 4,
+      "timestamp": "0:08-0:10",
+      "location": "Carved wood archway",
+      "camera_framing": "Wide shot of arch and model",
+      "camera_action": "Slow pan to highlight wood details",
+      "subject_action": "Model pauses, looks up at carvings",
+      "visual_description": "Intricate woodwork, warm tones, dress silhouette",
+      "on_screen_text": "Explore heritage",
+      "voiceover_script": "Yaha ko nagarik chhan...",
+      "audio_cue": null
+    },
+    {
+      "shot_number": 5,
+      "timestamp": "0:10-0:12",
+      "location": "Golden hour near the courtyard",
+      "camera_framing": "Silhouette shot of model with dress",
+      "camera_action": "Keep camera steady, capture golden light",
+      "subject_action": "Model stands still, dress flowing",
+      "visual_description": "Sunset glow, dress glowing in amber light",
+      "on_screen_text": "Glow of the day",
+      "voiceover_script": "Garmi ko mahatw",
+      "audio_cue": "silhouette chime"
+    },
+    {
+      "shot_number": 6,
+      "timestamp": "0:12-0:13",
+      "location": "Front of shop entrance",
+      "camera_framing": "Close‑up of shop logo",
+      "camera_action": "Quick flash, no movement",
+      "subject_action": "Logo appears",
+      "visual_description": "Shop logo on stone wall backdrop",
+      "on_screen_text": null,
+      "voiceover_script": null,
+      "audio_cue": null
+    },
+    {
+      "shot_number": 7,
+      "timestamp": "0:13-0:14",
+      "location": "Same as shot 6, overlay CTA",
+      "camera_framing": "Full screen with text overlay",
+      "camera_action": "Static",
+      "subject_action": "CTA displayed",
+      "visual_description": "Background fades to soft white, CTA prominent",
+      "on_screen_text": "DM for size & price",
+      "voiceover_script": "DM garnu hos",
+      "audio_cue": null
+    }
+  ],
+  "conversion_ending": {
+    "final_cta_text": "DM @bhaktapurfashion for size & price",
+    "recommended_action_type": "Instagram Direct Message",
+    "production_note": "Ensure Instagram handle is displayed in lower third for 1 second; add swipe‑up arrow if platform supports"
+  }
+}
