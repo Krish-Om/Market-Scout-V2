@@ -2,11 +2,12 @@ import json
 import os
 from groq import Groq
 from dotenv import load_dotenv
+from app.config import Config
 
 load_dotenv()  # Load environment variables from .env file
 
 # 🔑 Initialize Client
-client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+client = Config.GROQ_API_KEY
 
 # 📜 Agent Prompts
 TREND_SPOTTER_PROMPT = """You are a Hyper-Local TikTok Fashion Trend Spotter for Bhaktapur. Analyze the text description of the clothing item and context, then output ONE executable, high-conversion TikTok concept optimized for smartphone production.
