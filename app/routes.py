@@ -1,26 +1,17 @@
 from fastapi import APIRouter, HTTPException, UploadFile, File
-from models import UserInput, UserOutput
+from app.controller import start_pipeline
+from app.schemas import ClothingDescription, ContextNotes, FinalScript
 
-router = APIRouter(prefix="/user", tags=["user"])
+router = APIRouter(prefix="/v1/generation", tags=["generation"])
 
-@router.post("/upload", response_model=UserOutput,status_code=200)
-async def upload_file(user_input: UserInput):
-    """_summary_
-    Routing to Handle Single Image Only.
-
-    Args:
-        user_input (UserInput): _description_
-
-    Returns:
-        _type_: UserOutput
-
+@router.post("/generation", response_model=FinalScript,status_code=200)
+async def generate_script(clothing_description: ClothingDescription, context_notes: ContextNotes):
     """
-    # Process the uploaded file and description here
+    Endpoint to upload a clothing description and context notes, and receive a verified script.
+    """
     try:
-        image_file = await user_input.image.read()
-        # Pass it to the controller or service layer for further processing
-    except HTTPException as e:
-        raise HTTPException(status_code=400, detail="Failed to read the uploaded file.")
-
-    # For example, you can save the file or perform some analysis
-    return UserOutput()  # Return an appropriate response
+        # Call the run_tiktok_pipeline function with the provided inputs
+        verified_script = await start_pipeline(clothing_description.description, context_notes.notes)
+        return {"status": "PASSED", "verified_script": verified_script}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
