@@ -3,7 +3,7 @@ from pydantic import BaseModel, Field
 
 class ClothingDescription(BaseModel):
     description: str = Field(
-        ..., description="A detailed description of the clothing item."
+        ..., description="A detailed description of the clothing item.",
         examples=["Traditional Newari black cotton sari with red border."],
     )
 
