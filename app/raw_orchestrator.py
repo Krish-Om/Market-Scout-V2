@@ -3,6 +3,7 @@ import os
 from groq import Groq
 from dotenv import load_dotenv
 from app.config import Config
+from app.utils import track_tokens
 
 load_dotenv()  # Load environment variables from .env file
 
@@ -106,6 +107,7 @@ Return your response inside a valid JSON object matching the schema below. Do no
 GUARDRAIL_PROMPT = """
 ROLE: SYSTEM QA & GUARDRAIL VALIDATOR (Bhaktapur TikTok Pipeline)
 
+CRITICAL INSTRUCTION: You MUST respond ONLY in valid JSON format. Do not include markdown code blocks (```json), intro text, or trailing comments.
 OBJECTIVE:
 You are the final safety, cultural, and technical check. Review the generated outputs from Agent 1 (Trend Spotter) and Agent 2 (Scriptwriter) against the input constraints. Flag any violations or output a clean "PASSED".
 
@@ -139,30 +141,38 @@ If ALL checks pass:
 Return JSON:
 {
   "status": "PASSED",
-  "verified_script": <insert exact Agent 2 JSON output>
+  "verified_script": {
+  "title":"String", 
+  "shots":[]
+  }
 } """
 
 
+@track_tokens
 async def call_llm(system_prompt: str, user_input: str, json_mode: bool = False) -> str:
     """Helper function to execute a completion call using the Groq SDK."""
     kwargs = {
-        "model": "llama-3.3-70b-versatile",
+        "model": "openai/gpt-oss-20b",
         "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_input},
         ],
+        "max_tokens": 2048,
         "temperature": 0.2,
     }
     if json_mode:
         kwargs["response_format"] = {"type": "json_object"}
 
     response = client.chat.completions.create(**kwargs)
-    return response.choices[0].message.content
+    return response
 
 
 async def run_tiktok_pipeline(
     clothing_description: str, context_notes: str = ""
 ) -> dict:
+    from app.utils import run_metrics
+
+    run_metrics.clear()
     """Orchestrates Trend Spotter -> Scriptwriter -> Guardrail Loop."""
     # 📊 Step 1: Agent 1 (Trend Spotter)
     print("📊 Generating trend concept...")
@@ -189,7 +199,15 @@ async def run_tiktok_pipeline(
 
         if guardrail_result.get("status") == "PASSED":
             print("✅ Script passed all guardrail checks!")
-            return guardrail_result.get("verified_script")
+            total_tokens = sum(
+                item["prompt_tokens"] + item["completion_tokens"]
+                for item in run_metrics
+            )
+            total_cost = sum(item["cost_usd"] for item in run_metrics)
+            return {
+                "script": guardrail_result.get("verified_script"),
+                "metrics": {"total_tokens": total_tokens, "total_cost_usd": total_cost},
+            }
 
         # ⚠️ Failed validation: collect reasons and prepare retry prompt
         reasons = guardrail_result.get("reasons", [])

@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, responses
 from app.routes import router as generation_router
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import Config
@@ -29,3 +29,8 @@ app.add_middleware(
 )
 
 app.router.include_router(generation_router)
+
+
+@app.get("/")
+async def root():
+    return responses.RedirectResponse(url="/docs")
