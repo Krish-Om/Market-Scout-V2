@@ -206,7 +206,7 @@ async def run_tiktok_pipeline(
             total_cost = sum(item["cost_usd"] for item in run_metrics)
             return {
                 "script": guardrail_result.get("verified_script"),
-                "metrics": {"total_tokens": total_tokens, "total_cost": total_cost},
+                "metrics": {"total_tokens": total_tokens, "total_cost_usd": total_cost},
             }
 
         # ⚠️ Failed validation: collect reasons and prepare retry prompt
