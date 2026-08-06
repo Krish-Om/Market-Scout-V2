@@ -19,7 +19,7 @@ async def generate_script(
         )
         return {"status": "PASSED", "verified_script": verified_script}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=f"Pipeline Error: {str(e)}")
 
 
 @router.get("/health", status_code=200)
